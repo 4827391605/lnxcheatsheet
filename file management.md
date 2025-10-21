@@ -69,3 +69,58 @@ find /path/to/search -type f -mmin -10 find files modified less than 10 minutes 
 find /path/to/search -type f -mtime -1 find files modified within yesterday up till the moment
 
 find /path/to/search -type d find directories instead of files
+
+File Permissions and Ownership
+
+chmod +r file.txt lets all users to read the file
+
+chmod -r file.txt prevents any user from reading the file
+
+chmod +w file.txt allows all users to make changes to the file
+
+chmod -w file.txt prevents any user from making changes to the file
+
+chmod +x script.sh allows all users to execute the file
+
+chmod u+r file.txt allows the owner to read the file
+
+chmod u-r file.txt prevents the owner from reading the file
+
+chmod u+w file.txt allows the owner to make changes to the file
+
+chmod u-w file.txt prevents the owner from making changes to the file
+
+chmod u+x script.sh allows the owner to execute the file
+
+chmod u-x script.sh prevents the owner from executing the file
+
+chmod g+r file.txt allows the group to read the file
+
+chmod g-r file.txt prevent the group from reading the file
+
+chmod g+w file.txt allows the group to make changes to the file
+
+chmod g-w file.txt prevents the group from making changes to the file
+
+chmod g+x script.sh allows the group to execute the file
+
+chmod g-x script.sh prevents the group from executing the file
+
+chmod o+r file.txt allows others to read the file
+
+chmod o-r file.txt prevents others from reading the file
+
+chmod o+w file.txt allows others to make changes to the file
+
+chmod o-w file.txt prevent others from making changes to the file
+
+chmod o+x script.sh allows others to execute the file
+
+chmod o-x script.sh prevents others from executing the file
+
+chmod 755 file.txt sets specific permissions (see table, below)
+
+chown user:group file.txt changes ownership
+
+chown -R user:group /path/to/dir changes ownership recursively (for directories)
+
