@@ -124,3 +124,24 @@ chown user:group file.txt changes ownership
 
 chown -R user:group /path/to/dir changes ownership recursively (for directories)
 
+File Permission Table
+
+777  allows all users to read, write, and execute
+
+755  gives full permission for owner; read and execute for group and others
+
+700  full permissions for owner; no permissions for group or others
+
+666  read and write for owner, group, and others
+
+644  read and write for owner; read-only for group and others
+
+600 read and write for owner; no permissions for group and others
+
+555 read and execute for owner, group, and others
+
+440 read-only for owner and group; no permissions for others
+
+400 read-only for owner; no permissions for group and others
+
+711 full permissions for owner; execute-only for group and others
