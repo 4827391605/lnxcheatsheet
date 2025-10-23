@@ -1,157 +1,162 @@
 ### 2025-10-16
-ls
-lists files in the current directory
 
-ls- l
-long listing style i.e. (owner, size, allowed actions)
+# File management — Cheatsheet
+Date: 2025-10-16
 
-ls -a
- shows hidden files that start with .
+## Listing files
+- ls  
+  lists files in the current directory
 
-ls -lh
- human readable sizes
+- ls -l  
+  long listing (owner, size, permissions, timestamp)
 
-tree
-view directory tree
+- ls -a  
+  shows hidden files (names starting with .)
 
-Navigation
+- ls -lh  
+  long listing with human-readable sizes
 
-cd /path/to/dir changes to a directory
+- tree  
+  view directory tree (may require `sudo apt install tree`)
 
-cd .. go up in one directory
+## Navigation
+- cd /path/to/dir  
+  change to a directory
 
-cd - go to home directory
+- cd ..  
+  go up one directory
 
-pwd print currect directory
+- cd -  
+  go to previous directory
 
-Creating files
+- pwd  
+  print current directory
 
-touch file.txt create new empty file
+## Creating files and directories
+- touch file.txt  
+  create a new empty file (or update timestamp)
 
-mkdir new_folder create a new directory
+- mkdir new_folder  
+  create a new directory
 
-mkdir -p parent/child create nested directories
+- mkdir -p parent/child  
+  create nested directories (parents as needed)
 
-Copying files and directories
+## Copying files and directories
+- cp file1.txt file2.txt  
+  copy file
 
-cp file1.txt file2.txt copy file
+- cp -r dir1/ dir2/  
+  copy directory recursively
 
-cp -r dir1/ dir2/ copy directory recursively
+- cp -i file1.txt backup.txt  
+  prompt before overwrite
 
-cp -i file1.txt backup.txt prompting before overwrite
+## Moving and renaming
+- mv file.txt /new/location/  
+  move file to new location
 
-Moving and renaming
+- mv oldname.txt newname.txt  
+  rename file
 
-mv file.txt /new/location/ moves file to new location
+- mv -i file.txt /new/location/  
+  prompt before overwrite
 
-mv oldname.txt newname.txt renames file
+## Deleting files and directories
+- rm file.txt  
+  remove file
 
-mv -i file.txt /new/location/ another way to prompt before overwrite
+- rm -i file.txt  
+  prompt before delete
 
-Deleting Files and Directories
+- rm -r folder/  
+  recursively delete directory
 
-rm file.txt abomination of the file
+- rm -rf folder/  
+  force delete without prompt (dangerous)
 
-rm -i file.txt proceeding to delete/confirmation
+## Finding files
+- find . -name "*.log"  
+  find all .log files under current directory
 
-rm -r folder/ recursively deletes directory
+- find /path/to/search -type f -size +1M  
+  find files over 1MB
 
-rm -rf folder/ force delete without prompt
+- find /path/to/search -type f -mmin -10  
+  find files modified in the last 10 minutes
 
-Finding files
+- find /path/to/search -type f -mtime -1  
+  find files modified within the last 24 hours
 
-find . -name "*.log" find all of the log files
+- find /path/to/search -type d  
+  find directories instead of files
 
-find /path/to/search -type f -size +1M find files over 1MB in/var/log
+## File permissions and ownership
+Use `chmod` to change permissions and `chown` to change ownership.
 
-find /path/to/search -type f -mmin -10 find files modified less than 10 minutes ago
+- chmod +r file.txt  
+  add read permission (for relevant class: u/g/o or all with +r)
 
-find /path/to/search -type f -mtime -1 find files modified within yesterday up till the moment
+- chmod -r file.txt  
+  remove read permission
 
-find /path/to/search -type d find directories instead of files
+- chmod +w file.txt  
+  add write permission
 
-File Permissions and Ownership
+- chmod -w file.txt  
+  remove write permission
 
-chmod +r file.txt lets all users to read the file
+- chmod +x script.sh  
+  make file executable
 
-chmod -r file.txt prevents any user from reading the file
+- chmod u+r file.txt  
+  owner read
 
-chmod +w file.txt allows all users to make changes to the file
+- chmod g+w file.txt  
+  group write
 
-chmod -w file.txt prevents any user from making changes to the file
+- chmod o-x script.sh  
+  remove execute for others
 
-chmod +x script.sh allows all users to execute the file
+Numeric mode examples:
+- chmod 755 file.txt  
+  owner rwx, group r-x, others r-x
 
-chmod u+r file.txt allows the owner to read the file
+Changing ownership:
+- chown user:group file.txt  
+  change owner and group
 
-chmod u-r file.txt prevents the owner from reading the file
+- chown -R user:group /path/to/dir  
+  change ownership recursively
 
-chmod u+w file.txt allows the owner to make changes to the file
+### Common numeric permission modes
+- 777 — read/write/execute for owner, group, others  
+- 755 — owner rwx, group r-x, others r-x  
+- 700 — owner rwx, no permissions for group/others  
+- 666 — read/write for owner, group, others  
+- 644 — owner rw, group r, others r  
+- 600 — owner rw, none for group/others  
+- 555 — read & execute for all  
+- 440 — read-only for owner/group, none for others  
+- 400 — read-only for owner  
+- 711 — owner rwx, group execute-only, others execute-only
 
-chmod u-w file.txt prevents the owner from making changes to the file
+## Archiving and compression
+- tar -cvf archive.tar folder/  
+  create an uncompressed archive
 
-chmod u+x script.sh allows the owner to execute the file
+- tar -xvf archive.tar  
+  extract archive
 
-chmod u-x script.sh prevents the owner from executing the file
+- tar -czvf archive.tar.gz folder/  
+  create gzip-compressed archive
 
-chmod g+r file.txt allows the group to read the file
+- tar -xzvf archive.tar.gz  
+  extract gzip-compressed archive
 
-chmod g-r file.txt prevent the group from reading the file
+---
 
-chmod g+w file.txt allows the group to make changes to the file
-
-chmod g-w file.txt prevents the group from making changes to the file
-
-chmod g+x script.sh allows the group to execute the file
-
-chmod g-x script.sh prevents the group from executing the file
-
-chmod o+r file.txt allows others to read the file
-
-chmod o-r file.txt prevents others from reading the file
-
-chmod o+w file.txt allows others to make changes to the file
-
-chmod o-w file.txt prevent others from making changes to the file
-
-chmod o+x script.sh allows others to execute the file
-
-chmod o-x script.sh prevents others from executing the file
-
-chmod 755 file.txt sets specific permissions (see table, below)
-
-chown user:group file.txt changes ownership
-
-chown -R user:group /path/to/dir changes ownership recursively (for directories)
-
-File Permission Table
-
-777  allows all users to read, write, and execute
-
-755  gives full permission for owner  read and execute for group and others
-
-700  full permissions for owner  no permissions for group or others
-
-666  read and write for owner, group, and others
-
-644  read and write for owner  read-only for group and others
-
-600 read and write for owner  no permissions for group and others
-
-555 read and execute for owner, group, and others
-
-440 read-only for owner and group  no permissions for others
-
-400 read-only for owner; no permissions for group and others
-
-711 full permissions for owner; execute-only for group and others
-
-Archiving and Compression
-
-tar -cvf archive.tar folder/ c  reate archive with the contents of folder/
-
-tar -xvf archive. extract archive
-
-tar -czvf archive.tar.gz folder/ create compressed archive
-
-tar -xzvf archive.tar.gz extract compressed archive
+Notes:
+- Use code blocks when running commands in examples.  
+- Be careful with destructive commands (`rm -rf`, `chmod 777`).  
+- Consider adding examples for `rsync`, `scp`, and `zip/unzip` for completeness.
