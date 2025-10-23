@@ -128,20 +128,30 @@ File Permission Table
 
 777  allows all users to read, write, and execute
 
-755  gives full permission for owner; read and execute for group and others
+755  gives full permission for owner  read and execute for group and others
 
-700  full permissions for owner; no permissions for group or others
+700  full permissions for owner  no permissions for group or others
 
 666  read and write for owner, group, and others
 
-644  read and write for owner; read-only for group and others
+644  read and write for owner  read-only for group and others
 
-600 read and write for owner; no permissions for group and others
+600 read and write for owner  no permissions for group and others
 
 555 read and execute for owner, group, and others
 
-440 read-only for owner and group; no permissions for others
+440 read-only for owner and group  no permissions for others
 
 400 read-only for owner; no permissions for group and others
 
 711 full permissions for owner; execute-only for group and others
+
+Archiving and Compression
+
+tar -cvf archive.tar folder/ c  reate archive with the contents of folder/
+
+tar -xvf archive. extract archive
+
+tar -czvf archive.tar.gz folder/ create compressed archive
+
+tar -xzvf archive.tar.gz extract compressed archive
