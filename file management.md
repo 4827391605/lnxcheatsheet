@@ -152,4 +152,4 @@ Changing ownership:
   create gzip-compressed archive
 
 - tar -xzvf archive.tar.gz  
-  extract gzip-compressed archive
+  extract gzip-compressed archive.
